@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes">
+
+    <title>Ezy Notes</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+
+    <script src="js/index.js"></script>
+
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript>
+    <style>
+        html,body{
+            background:#fff!important;
+        }
+        .custum_b{
+              border-bottom:5px solid #defaf7;
+              width:200px;
+              background:#ffb400;
+          text-align:center!important;
+          color:#fff;
+              clear:both;
+        }
+
+        .custum_b:hover{
+            color:#fff;
+              border-bottom:5px solid #faf1de;
+                background:#ff6a00;
+        }
+
+
+
+        .nonet {
+            font-family: 'Segoe UI';
+            font-size: 20px;
+            color: #ff0000;
+            margin-bottom: 20px;
+            margin-top: 100px;
+        }
+        
+    </style>
+</head>
+
+<body >
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header full_with">
+
+                <a class="navbar-brand" href="#">
+                   
+                    <span id="lblCompany" style="font-size:x-large" class="loginspan"><img src="img/logo.png" class="imglogo" /> ezy notes</span>
+                </a>
+                <div class="left_img">
+                    <ul class="menu_login">
+                        <li>
+                            <button class="logout">
+                                <i class="fa fa-bars fa-2x"></i>
+                            </button>
+
+                            <ul class="submenu_login">
+
+                                <li>
+                                    <a href="#" onclick="return cancelform()">
+                                        <i class="fa fa-remove"></i>
+                                        Quit
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        
+
+        </div><!-- /.container-fluid -->
+        
+    </nav>
+
+
+
+    <div class="container-fluid">
+
+        <div class="loaddiv2" id="divload" style="display:none">
+            <div class="loadgif"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>
+            <div class="loadtxt">Loading...</div>
+        </div>
+
+
+
+
+        <div class="row dashdash" style="text-align:center!important" >
+
+
+              <div class="col-md-12 col-lg-12 nonet">
+                  <i class="fa fa-warning"> </i>  Sorry: Either it is Connection Issue or Server is down
+        <br/>
+                          <button id="btnstate_1" type="submit" onclick="return fnRetry();" class="custum_b">
+                    <i class="fa fa-refresh"> </i> Try Again
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div id="footer" class="footer-bar-color">
+        <div class="container">
+            <div class="powred">Powered By <b>Vyom Logix</b> </div>
+        </div>
+    </div>
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Error</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="lblError" class="err"><i class="fa fa-exclamation-circle"></i>  Connection Issue Still Persists</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btnclose" data-dismiss="modal"><i class="fa fa-remove"></i> Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="js/jquery.min.js"></script>    <script src="cordova.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/date.js"></script>
+    <script src="js/index.js"></script>
+    <script type="text/javascript">
+
+        window.onload = LoadDef();
+
+        function LoadDef()
+        {
+
+           
+            
+        }
+
+        function fnRetry()
+        {
+            $("#divload").attr("style", "");
+            try {
+                $(".btn").attr("disabled", true);
+                $(".submit").attr("disabled", true);
+                $(".submitclass").attr("disabled", true);
+            } catch (e) { }
+
+            var IP = IPStr();
+            $.support.cors = true;
+            $.ajax({
+                url: IP + "Administrative.svc/CheckNet",
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    var res = result.d;
+                   
+                    if (res == "1") {
+                        var lastpage = localStorage.getItem("lastpage");
+                        ShowPro();
+                        if (lastpage != null)
+                        {
+                            window.location = lastpage;
+
+                        }
+                        else {
+                            window.location = "dashboard.html";
+                        }
+                    }
+                   
+                },
+                error: function () {
+                    $("#myModal").modal();
+                },
+                complete: function (request, status) { HideLoad(); }
+            });
+        }
+
+    </script>
+</body>
+        </html>

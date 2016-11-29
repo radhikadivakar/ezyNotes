@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes">
+
+    <title>Ezy Notes</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/start.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+
+    <script src="js/index.js"></script>
+
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript>
+    <style>
+        body{
+            background-image:url(images/bg.jpg);background-repeat:repeat!important;
+            margin-bottom:0px;
+        }
+    </style>
+</head>
+
+<body >
+
+
+    <input id="hdStateID" value="0" type="hidden" />
+    <input id="hdBoardID" value="0" type="hidden" />
+    <input id="hdGenderID" value="0" type="hidden" />
+
+    <div class="container-fluid ">
+
+        <div class="loaddiv2" id="divload" style="display:none">
+            <div class="loadgif"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>
+            <div class="loadtxt">Loading...</div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 col-lg-4 col-md-offset-4 col-md-4 ">
+                <div class="color-main">
+                    <div id="wrapper">
+                        <div id="register" class="animate form">
+                            <div class="logo-main"><img src="img/logog.png" /></div>
+                            <h1 class="reg-title"> notes made easy </h1>
+                            <form action="" class="register-form">
+                              
+                                <p class="signin button">
+
+                                    <button type="button" style="display:none" id="btnSign" onclick="return ValidateForm()" class="submitclass" value="Sign up">  <i class="fa fa-thumbs-up" aria-hidden="true"></i> Get Started</button>
+                                </p>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+
+
+
+    <script src="js/jquery.min.js"></script>    <script src="cordova.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/date.js"></script>
+    <script src="js/index.js"></script>
+    <script type="text/javascript">
+
+
+        document.addEventListener('deviceready', onDeviceReady1.bind(this), false);
+
+        function onDeviceReady1() {
+            document.addEventListener("backbutton", cancelform.bind(this), false);
+
+        }
+
+        window.onload = LoadDef();
+        function LoadDef()
+        {
+            var getst = localStorage.getItem("getstarted");
+            if (getst != null) {
+                var stateid = localStorage.getItem("stateid");
+                if (stateid == null) {
+                    window.location = "state.html";
+                }
+                else {
+                    var classid = localStorage.getItem("classid");
+                    if (classid == null) {
+                        window.location = "class.html";
+                    }
+                    else {
+                        var detailsid = localStorage.getItem("classdetailsid");
+                        if(detailsid==null)
+                        {
+                            window.location = "classdetails.html";
+                        }
+                        else {
+                            
+                            window.location = "dashboard.html";
+                        }
+                    }
+                }
+            }
+            else {
+                $("#btnSign").show();
+            }
+        }
+
+
+
+        function ValidateForm() {
+            ShowPro();
+            localStorage.setItem("getstarted", "1");
+            window.location = "state.html";
+
+          
+        }
+    </script>
+</body>
+        </html>

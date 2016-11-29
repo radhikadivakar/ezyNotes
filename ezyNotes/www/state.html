@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes">
+
+    <title>Ezy Notes</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+
+    <script src="js/index.js"></script>
+
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript>
+    <style>
+        .custum_b{
+              border-bottom:5px solid #23b9ab;
+        }
+
+        .custum_b:hover{
+            color:#05ccba;
+              border-bottom:5px solid #05ccba;
+        }
+
+        .btnsel{
+            background:#23b9ab!important;
+            color:#fff!important;
+            border-bottom:5px solid #23b9ab!important;
+
+        }
+    </style>
+</head>
+
+<body >
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header full_with">
+
+                <a class="navbar-brand" href="#">
+                   
+                    <span id="lblCompany" style="font-size:x-large" class="loginspan"><img src="img/logo.png" class="imglogo" /> ezy notes</span>
+                </a>
+        
+                <div class="left_img">
+                    <ul class="menu_login">
+                        <li>
+                            <button class="logout">
+                                <i class="fa fa-bars fa-2x"></i>
+                            </button>
+
+                            <ul class="submenu_login">
+
+                                <li>
+                                    <a href="#" onclick="return cancelform()">
+                                        <i class="fa fa-remove"></i>
+                                        Quit
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        
+
+        </div><!-- /.container-fluid -->
+        <div class="subheader">
+           Step 1:  Choose State
+        </div>
+    </nav>
+
+
+
+    <div class="container-fluid">
+
+        <div class="loaddiv2" id="divload" style="display:none">
+            <div class="loadgif"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>
+            <div class="loadtxt">Loading...</div>
+        </div>
+
+
+
+
+        <div class="row dashdash" style="text-align:center!important" id="divState">
+
+
+             <!-- <div class="col-md-12 col-lg-12">
+
+              <button id="btnstate_1" type="submit" onclick="return fnStateClick(this);" class="custum_b">
+                <i class="fa fa-check"> </i> Karnataka
+            </button>
+
+
+            </div>-->
+
+
+        </div>
+
+
+    </div>
+    <div id="footer" class="footer-bar-color">
+        <div class="container">
+            <div class="powred">Powered By <b>Vyom Logix</b> </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Error</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="lblError"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btnclose" data-dismiss="modal"><i class="fa fa-remove"></i> Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <script src="js/jquery.min.js"></script>    <script src="cordova.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/date.js"></script>
+    <script src="js/index.js"></script>
+    <script type="text/javascript">
+
+        window.onload = LoadDef();
+
+        function LoadDef()
+        {
+
+            ShowLoad();
+            var ip = IPStr();
+            var cls = new Object();
+            cls.Key = appkey;
+            $.ajax({
+                url: ip + "Administrative.svc/GetState",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ objgroup: JSON.stringify(cls) }),
+                success: function (data) {
+                    var res = data.d;
+                    $("#divState").html("");
+
+                    var str = "";
+                    for (var i = 0; i < res.length; i++) {
+                        str += '<div class="col-md-4 col-lg-3 col-sm-12 col-xs-12"><button id="btnstate_' + res[i].ID + '" type="submit" onclick="return fnStateClick(this);" class="custum_b">'
+                            + '<i class="fa fa-check"> </i> ' + res[i].Name
+                             + '</button></div>';
+
+                    }
+                    $("#divState").html(str);
+
+                },
+                complete: function (data) { LoadCom(); }
+            });
+        }
+
+        function LoadCom()
+        {
+    
+            var stateid = localStorage.getItem("stateid");
+            if (stateid != null) {
+                $("#btnstate_" + stateid).addClass("btnsel");
+            }
+        }
+        function fnStateClick(btn) {
+      
+            localStorage.setItem("stateid", $(btn).attr("id").split('_')[1].trim());
+            window.location = "class.html";
+        }
+    </script>
+</body>
+        </html>

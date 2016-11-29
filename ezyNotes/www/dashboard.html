@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes">
+
+    <title>Ezy Notes</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+
+    <script src="js/index.js"></script>
+
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript>
+    <style>
+       html,body
+       {
+           background-color:#fff;
+       }
+        .custum_b {
+            border-bottom: 10px solid #ddd;
+            height:80px;
+            text-align:center!important;
+            color:#ffffff;
+            font-size:24px;
+        }
+
+            .custum_b:hover {
+                     color:#ffffff;
+                border-bottom: 10px solid #b4b3b3;
+            }
+
+             .btnsel{
+            background:#f68110!important;
+            color:#fff!important;
+            border-bottom:10px solid #b4b3b3!important;
+
+        }
+    </style>
+
+</head>
+
+<body >
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header full_with">
+
+                <a class="navbar-brand" href="#">
+                  
+                    <span id="lblCompany" style="font-size:x-large" class="loginspan"> <img src="img/logo.png" class="imglogo" /> ezy notes</span>
+                </a>
+                <div class="left_img">
+                      <ul class="menu_login">
+                          <li>
+                              <button class="logout">
+                                  <i class="fa fa-bars fa-2x"></i>
+                              </button>
+                       
+                            <ul class="submenu_login">
+                                <li>
+                                    <a href="dashboard.html">
+                                        <i class="fa fa-dashboard"></i>
+                                        Dashboard
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="state.html">
+                                        <i class="fa fa-arrows-h"></i>
+                                        Switch Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="return cancelform()">
+                                        <i class="fa fa-remove"></i>
+                                      Quit
+                                    </a>
+                                </li>
+                              
+                              
+                                
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        
+
+        </div><!-- /.container-fluid -->
+        <div class="subheader" id="subhead">
+          &nbsp;
+        </div>
+    </nav>
+
+
+
+    <div class="container-fluid">
+
+        <div class="loaddiv2" id="divload" style="display:none">
+            <div class="loadgif"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>
+            <div class="loadtxt">Loading...</div>
+        </div>
+
+
+
+
+        <div class="row dashdash" style="text-align:center!important">
+
+            <div class="pageheader">
+                <i class="fa fa-dashboard"></i>  Dashboard
+            </div>
+        
+                <div  id="divSubjects" >
+                  
+                        <!--<button id="btnpay" type="submit" onclick="return onClick(4);" class="custum_b">
+                <i class="fa fa-check"> </i> SSLC
+            </button>-->
+
+
+                </div>
+
+              
+
+        </div>
+
+
+    </div>
+    <div id="footer" class="footer-bar-color">
+        <div class="container">
+            <div class="powred">Powered By <b>Vyom Logix</b>  </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Error</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="lblError"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btnclose" data-dismiss="modal"><i class="fa fa-remove"></i> Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <script src="js/jquery.min.js"></script>    <script src="cordova.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/date.js"></script>
+    <script src="js/index.js"></script>
+    <script type="text/javascript">
+
+
+        window.onload = LoadDef();
+
+        function LoadDef() {
+
+           
+
+            var ip = IPStr();
+
+            var stateid = localStorage.getItem("stateid");
+            var classid = localStorage.getItem("classid");
+            var detailsid = localStorage.getItem("classdetailsid");
+
+            if (stateid == null)
+            {
+                window.location = "state.html";
+            }
+            else if (classid == null) {
+                window.location = "class.html";
+            }
+            else if (detailsid == null) {
+                window.location = "classdetails.html";
+            }
+
+
+            ShowLoad();
+            var cls = new Object();
+            cls.Key = appkey;
+            cls.ClassID = detailsid;
+
+            $.ajax({
+                url: ip + "Administrative.svc/GetSubject",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ objgroup: JSON.stringify(cls) }),
+                success: function (data) {
+                    var res = data.d;
+                    $("#divSubjects").html("");
+
+
+                   
+
+                    var str = ""; color = "";
+                    for (var i = 0; i < res.length; i++) {
+                        if (colors.split(',').length > i)
+                            color = colors.split(',')[i];
+                        else
+                            color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+
+
+                        str += '<div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><button id="btnsubject_' + res[i].ID + '" type="submit" onclick="return fnSubjectClick(this);" class="custum_b" style="background:' + color + '">'
+                          + '' + res[i].Name
+                           + '</button></div>';
+                    }
+                    $("#divSubjects").html(str);
+
+                },
+                complete: function (data) { LoadCom(); }
+            });
+        }
+
+        function LoadCom() {
+            var profile = localStorage.getItem("profile");
+            if (profile == null) {
+                window.location = "classdetails.html";
+            }
+            $("#subhead").html(profile);
+        }
+
+
+        function fnSubjectClick(btn) {
+            ShowPro();
+            localStorage.setItem("subjectid", $(btn).attr("id").split('_')[1].trim());
+            window.location = "subject.html";
+        }
+
+
+        var colors = "#e4430f,#FB7D79,#fb9a00 ,#F8CD9E,#bd8639,#819E83,#82CC00,#11a72f,#12C3CC,#1075E0,#5210E0,#C810E0,#C91C64,#1D07E8,#03AB97,#638519,#9E8902,#85C3ED,#BE85ED ,#ED85ED,#ED9885,#EDD185,#EDED85,#BEED85,#85EDD3,#B1C6C7,#D4C3AE,#8CDBC9,#DB8CBE,#C91C64,#B071B0,#03AB97,#638519,#9E8902";
+
+    
+    </script>
+</body>
+        </html>

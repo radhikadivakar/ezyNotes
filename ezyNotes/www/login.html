@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes">
+
+    <title>Ezy Notes</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+      <link rel="stylesheet" href="css/jquery-ui.css">
+      <noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript> 
+  </head>
+
+  <body style=" background-image:url(images/bg.jpg);">
+
+      <input id="hdStateID" value="0" type="hidden" />
+      <input id="hdBoardID" value="0" type="hidden" />
+      <input id="hdGenderID" value="0" type="hidden" />
+
+    <div class="container-fluid "  >
+    
+            <div class="loaddiv2" id="divload" style="display:none">
+                <div class="loadgif"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>
+                <div class="loadtxt">Loading...</div>
+            </div>
+    
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 col-lg-4 col-md-offset-4 ">
+                <div class="color-main">
+                    <div id="wrapper">
+                        <div id="register" class="animate form">
+                            <div class="logo-main"><img src="img/logo.png" /></div>
+                            <h1 class="reg-title"><i class="fa fa-gears"></i> Settings </h1>
+                            <form action="" class="register-form">
+
+                                <p>
+
+                                    <input id="txtName" class="cl-form name-icon" type="text" placeholder="Name" />
+                                </p>
+                                <p>
+                                    <input id="txtEmail" class="cl-form email-icon" type="text"  placeholder="Email" />
+                                </p>
+                                <p>
+
+                                    <input id="txtMobile" class="cl-form phone-icon"  type="text" placeholder="Mobile" />
+                                </p>
+                                <p>
+
+                                    <input id="txtSchool" class="cl-form school-icon"  type="text" placeholder="School Name" />
+                                </p>
+
+                                <p>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                                        <div id="ddlState" class="wrapper-dropdown-3" tabindex="1">
+                                            <span> <i class="fa fa-location-arrow " aria-hidden="true" style="font-size:20px"></i>  State</span>
+                                            <ul class="dropdown" id="ulState"></ul>
+                                        </div>
+
+                                    </div>
+                                </p>
+
+
+                                <p>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                                        <div id="ddlBoard" class="wrapper-dropdown-3" tabindex="1">
+                                            <span> <i class="fa fa-circle-o " aria-hidden="true" style="font-size:20px"></i>  Board</span>
+                                            <ul class="dropdown" id="ulBoard"></ul>
+                                        </div>
+
+                                    </div>
+                                </p>
+
+                                <p>
+
+                                    <input id="txtCity" class="cl-form city-icon" name="passwordsignup_confirm" type="text" placeholder="City" />
+                                </p>
+
+                                <p>
+
+                                    <div class="col-md-5 col-sm-5 col-xs-5 nopadding">
+                                        <input id="txtDOB" style="width:85%!important" class="cl-form  birthday-icon" name="passwordsignup_confirm" type="text" placeholder="Birthday (optional)" />
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 nopadding"  style="float:right">
+                                        <div id="ddlGender" class="wrapper-dropdown-3" tabindex="1">
+                                            <span> <i class="fa fa-venus-mars " aria-hidden="true" style="font-size:20px"></i>  Gender</span>
+                                            <ul class="dropdown">
+                                                <li><a id="liGender_M" href="#"><i class="fa fa-mars " aria-hidden="true" style="font-size:20px"></i> Male</a></li>
+                                                <li><a id="liGender_F" href="#"><i class="fa fa-venus" aria-hidden="true" style="font-size:20px"></i> Female</a></li>
+                                                <li><a id="liGender_T" href="#"><i class="fa fa-transgender" aria-hidden="true" style="font-size:20px"></i> Trans </a></li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </p>
+                                <p class="signin button">
+
+                                    <button type="button" id="btnSign" onclick="return ValidateForm()" class="submitclass" value="Sign up">  <i class="fa fa-thumbs-up" aria-hidden="true"></i> Done</button>
+                                </p>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+      <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Error</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p id="lblError"></p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default btnclose" data-dismiss="modal"><i class="fa fa-remove"></i> Close</button>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+
+
+
+
+    <script src="js/jquery.min.js"></script>    <script src="cordova.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+      <script src="js/jquery-ui.js"></script>
+      <script src="js/date.js"></script>
+      <script src="js/index.js"></script>
+      <script type="text/javascript">
+
+
+    function DropDown(el) {
+        this.dd = el;
+        this.placeholder = this.dd.children('span');
+        this.opts = this.dd.find('ul.dropdown > li a');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+    DropDown.prototype = {
+        initEvents: function () {
+            var obj = this;
+
+            obj.dd.on('click', function (event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function () {
+                var opt = $(this);
+                obj.val = opt.html();
+                obj.index = opt.index();
+                obj.placeholder.html(obj.val);
+         
+            });
+        },
+        getValue: function () {
+            return this.val;
+        },
+        getIndex: function () {
+            return this.index;
+        }
+    }
+
+    var ds = ""; dg = "";db="";
+
+
+    function LoadBoard() {
+        db = new DropDown($('#ddlBoard'));
+        db.opts.on('click', function () {
+            var opt = $(this);
+            $("#hdBoardID").val(opt.attr("id").split('_')[1]);
+        });
+    }
+
+    function LoadDef() {
+         ds = new DropDown($('#ddlState'));
+         dg = new DropDown($('#ddlGender'));
+   
+
+         ds.opts.on('click', function () {
+             ShowLoad();
+             var opt = $(this);
+             $("#hdStateID").val(opt.attr("id").split('_')[1]);
+             $("#hdBoardID").val("0");
+             try{
+                 db.placeholder.html('<i class="fa fa-circle-o " aria-hidden="true" style="font-size:20px"></i>  Board');
+             } catch (e) { }
+
+             var ip = IPStr();
+
+             var cls = new Object();
+             cls.Key = appkey;
+             cls.ID = $("#hdStateID").val().trim();
+             $.ajax({
+                 url: ip + "Administrative.svc/GetBoard",
+                 type: "POST",
+                 contentType: "application/json",
+                 data: JSON.stringify({ objgroup: JSON.stringify(cls) }),
+                 success: function (data) {
+                     var res = data.d;
+                     $("#ulBoard").html("");
+
+                     var str = "";
+                     for (var i = 0; i < res.length; i++) {
+                         str += ' <li><a href="#" id="liboard_' + res[i].ID + '"><i class="fa fa-circle-o" aria-hidden="true" style="font-size:20px"></i> ' + res[i].Name + '</a></li>';
+
+                     }
+                     $("#ulBoard").html(str);
+                     LoadBoard();
+                 },
+                 complete: function (data) { HideLoad(); }
+             });
+            
+
+
+         });
+
+         dg.opts.on('click', function () {
+             var opt = $(this);
+             $("#hdGenderID").val(opt.attr("id").split('_')[1]);
+         });
+       
+
+
+        $(document).click(function () {
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+        $("#txtDOB").datepicker();
+        $("#txtDOB").datepicker("option", "dateFormat", "dd-M-yy");
+        $("#txtDOB").datepicker("option", "changeMonth", true);
+        $("#txtDOB").datepicker("option", "changeYear", true);
+        var year = new Date().getFullYear();
+        var styear = parseInt(year) - 80;
+        var enyear = parseInt(year) - 10;
+        $("#txtDOB").datepicker("option", "defaultDate", "01-Jan-" + enyear);
+        $("#txtDOB").datepicker("option", "yearRange", styear + ":" + enyear);
+        $(".ui-datepicker-year").val(enyear);
+
+        HideLoad();
+    }
+
+    window.onload = loadForm();
+
+
+
+
+  
+    function loadForm() {
+        ShowLoad();
+        $.support.cors = true;
+        try{
+            window.plugins.uniqueDeviceID.get(PhoneUIDSuccess, PhoneUIDFail);
+        }catch(e){
+            phoneuid=""
+        }
+        ShowLoad();
+        var ip = IPStr();
+
+        var cls = new Object();
+        cls.Key = appkey;
+        $.ajax({
+            url: ip + "Administrative.svc/GetState",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ objgroup: JSON.stringify(cls) }),
+            success: function (data) {
+                var res = data.d;
+                $("#ulState").html("");
+
+                var str = "";
+                for (var i = 0; i < res.length; i++) {
+                    str += ' <li><a href="#" id="listate_' + res[i].ID + '"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:20px"></i> ' + res[i].Name + '</a></li>';
+
+                }
+                $("#ulState").html(str);
+
+
+                LoadDef();
+            },
+            complete: function (data) { }
+        });
+    }
+
+    function ValidateForm()
+    {
+        ShowLoad();
+     
+        if($("#txtName").val().trim()=="")
+        {
+            ShowErrorMsg("#lblError", "Please enter Name");
+            return;
+        }
+
+        if ($("#txtEmail").val().trim() == "") {
+            ShowErrorMsg("#lblError", "Please enter Email");
+            return;
+        }
+
+        if (ValidateEmail($("#txtEmail").val().trim()) == false)
+        {
+            ShowErrorMsg("#lblError", "Please enter Valid Email");
+            return;
+        }
+        if ($("#txtMobile").val().trim() != "")
+        {
+            if (isNaN($("#txtMobile").val().trim()) || $("#txtMobile").val().length<10) {
+                ShowErrorMsg("#lblError", "Please enter Valid Mobile No.");
+                return;
+            }
+
+            if ($("#txtMobile").val().trim().substring(0, 1) == "0") {
+                ShowErrorMsg("#lblError", "First digit in Mobile No. cannot be 0");
+                return false;
+            }
+        }
+
+        if (  $("#hdStateID").val().trim() == "0") {
+            ShowErrorMsg("#lblError", "Please select State");
+            return;
+        }
+
+        if ($("#hdBoardID").val().trim() == "0") {
+            ShowErrorMsg("#lblError", "Please select Board");
+            return;
+        }
+
+
+
+        if ($("#txtCity").val().trim() == "") {
+            ShowErrorMsg("#lblError", "Please enter City");
+            return;
+        }
+
+        if ($("#hdGenderID").val().trim() == "0") {
+            ShowErrorMsg("#lblError", "Please select Gender");
+            return;
+        }
+
+
+        if ($("#txtDOB").val().trim() != "") {
+            var endyr = new Date().getFullYear() - 10;
+            try{
+                var curyr = Date.parse($("#txtDOB").val().trim()).getFullYear();
+                if (curyr > endyr) {
+                    ShowErrorMsg("#lblError", "Please enter valid DOB");
+                    return false;
+                }
+            } catch (e) {
+                ShowErrorMsg("#lblError", "Please enter valid DOB");
+                return false;
+            }
+        }
+
+        return false;
+    }
+      </script>
+  </body>
+</html>

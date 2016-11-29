@@ -1,0 +1,745 @@
+
+
+/* remove codrops styles and reset the whole thing */
+#container_demo{
+	 text-align: left;
+	 margin: 0;
+	 padding: 0;
+	 margin: 0 auto;
+	 font-family: "Trebuchet MS","Myriad Pro",Arial,sans-serif;
+}
+
+@font-face {
+    font-family: 'Segoe Script';
+    src: url('../fonts/SEGOEPR.TTF');
+}
+
+@font-face {
+    font-family: 'Segoe UI ';
+    src: url('../fonts/segoeui.ttf');
+}
+
+
+@font-face {
+    font-family: 'Segoe UI Light';
+    src: url('../fonts/segoeuil.ttf');
+}
+a.hiddenanchor{
+	display: none;
+}
+/** The wrapper that will contain our two forms **/
+#wrapper{
+	right: 0px;
+	margin:auto auto auto auto;
+    margin-top:20px!important;	
+	width: 100%;
+	position: relative;	
+}
+/**** Styling the form elements **/
+
+/**** general text styling ****/
+#wrapper a{
+	color: rgb(95, 155, 198);
+	text-decoration: underline;
+}
+
+#wrapper h1{
+	font-size: 26px;
+	color: #FFF;
+	padding: 2px 0 10px 0;
+	font-weight: lighter;
+	text-align: center;
+	padding-bottom: 12px;
+}
+/** For the moment only webkit supports the background-clip:text; */
+.register-form{ border-bottom-left-radius:3px;border-bottom-right-radius:3px; padding:8px 2%; float:left; position:relative;width:100%;  }
+
+
+
+
+#wrapper p{
+	margin-bottom:15px;
+}
+#wrapper p{
+	margin: 3px 0 0 0;float: left;
+ 
+    width: 100%;
+}
+#wrapper label{
+	color: rgb(64, 92, 96);
+	position: relative;
+}
+
+/**** advanced input styling ****/
+/* placeholder */
+::-webkit-input-placeholder  { 
+	color: rgb(190, 188, 188); 
+	font-style: italic;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder{ 
+	color: #fff;
+	font-style: italic;
+} 
+input {
+  outline: none;
+}
+#wrapper input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color:#fff; font-style:normal;
+} 
+#wrapper input:-moz-placeholder { /* Firefox 18- */
+    color:#fff; font-style:normal;
+}
+
+#wrapper input::-moz-placeholder {  /* Firefox 19+ */
+    color:#fff; font-style:normal;
+}
+
+#wrapper input:-ms-input-placeholder {  
+    color:#fff; font-style:normal;
+}
+/* all the input except submit and checkbox */
+.name-icon {
+    background-image: url("../images/name-icon.png") !important;
+    background-position: 3px 7px !important;
+    background-repeat: no-repeat !important;
+    background-size: 24px auto !important;
+}
+.email-icon {
+    background-image: url("../images/email-icon.png") !important;
+    background-position: 3px 7px !important;
+    background-repeat: no-repeat !important;
+    background-size: 24px auto !important;
+}
+.phone-icon {
+    background-image: url("../images/phone-icon.png") !important;
+    background-position: 3px 7px !important;
+    background-repeat: no-repeat !important;
+    background-size: 24px auto !important;
+}
+.birthday-icon {
+    background-image: url("../images/birthday-icon.png") !important;
+    background-position: 3px 7px !important;
+    background-repeat: no-repeat !important;
+    background-size: 24px auto !important; width:auto!important;
+}
+.school-icon {
+    background-image: url("../images/school-icon.png") !important;
+    background-position: 3px 7px !important;
+    background-repeat: no-repeat !important;
+    background-size: 24px auto !important;
+}
+.city-icon {
+    background-image: url("../images/city-icon.png") !important;
+    background-position: 3px 7px !important;
+    background-repeat: no-repeat !important;
+    background-size: 24px auto !important;
+}
+.state-icon {
+    background-image: url("../images/state-icon.png") !important;
+    background-position: 3px 7px !important;
+    background-repeat: no-repeat !important;
+    background-size: 24px auto !important;
+}
+.country-icon {
+    background-image: url("../images/country-icon.png") !important;
+    background-position: 3px 7px !important;
+    background-repeat: no-repeat !important;
+    background-size: 24px auto !important;
+}
+#wrapper input:not([type="checkbox"]){
+	width: 89.5%;
+	margin-top: 4px;
+	padding: 9px 5px 10px 32px;	
+
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	  -moz-box-sizing : content-box;
+	       box-sizing : content-box;
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+	        border-radius: 3px;
+	
+	-webkit-transition: all 0.2s linear;
+	   -moz-transition: all 0.2s linear;
+	     -o-transition: all 0.2s linear;
+	        transition: all 0.2s linear;
+}
+#wrapper input:not([type="checkbox"]):active,
+#wrapper input:not([type="checkbox"]):focus{
+	border: 1px solid rgba(225, 225, 225, 0.7);
+	background: rgba(238, 236, 240, 0.1);	
+	-webkit-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
+	   -moz-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
+	        box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
+} 
+
+/** the magic icon trick ! **/
+[data-icon]:after {
+    content: attr(data-icon);
+    font-family: 'Segoe UI';
+    color: rgb(106, 159, 171);
+    position: absolute;
+    left: 10px;
+    top: 35px;
+	width: 30px;
+}
+
+/*styling both submit buttons */
+#wrapper p.button .submitclass{
+	width: 100%;
+	cursor: pointer;	
+ background-color:#fb9a00;
+	padding: 12px 0px;
+	font-family: 'Segoe UI';
+	color: #fff;
+	font-size: 22px;	
+	border: 0px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+	-webkit-transition: all 0.2s linear;
+	   -moz-transition: all 0.2s linear;
+	     -o-transition: all 0.2s linear;
+	        transition: all 0.2s linear;
+           -moz-box-shadow:     0 0 16px #605d5d;
+   -webkit-box-shadow:  0 0 16px #605d5d;
+   box-shadow:  0 0 16px #605d5d;
+
+
+}
+#wrapper p.button .submitclass:hover{
+	background: #feaf21;
+}
+#wrapper p.button .submitclass:active,
+#wrapper p.button .submitclass:focus{
+	background:#feaf21;
+	position: relative;
+	top: 1px;
+	border: 0px solid rgb(84, 84, 85);	
+ -moz-box-shadow:    inset 0 0 3px #6c6b6b;
+   -webkit-box-shadow: inset 0 0 3px #6c6b6b;
+   box-shadow:         inset 0 0 3px #6c6b6b;
+}
+.reg-title{ margin:0px; font-family:'Segoe Script' ;margin-top:10px;margin-bottom:5px;text-shadow:1px 1px 1px #999;color:#fff !important;}
+.reg-title img{ width: 37px;}
+.logo-main {
+width:130px;
+height:130px;
+border-radius:65px!important;
+background-color:#fff;
+box-shadow: 1px 1px 1px #999;
+margin:auto auto auto auto!important;
+border:5px solid rgb(229, 224, 224);
+}
+.logo-main img{ text-align:center; display:block; margin:26px auto; width: 115px; }
+p.login.button,
+p.signin.button{
+	text-align: right;
+	margin: 5px 0; margin-top:39px!important;
+}
+
+
+/* styling the checkbox "keep me logged in"*/
+.keeplogin{
+	margin-top: -5px;
+}
+.keeplogin input,
+.keeplogin label{
+	display: inline-block;
+	font-size: 12px;	
+	font-style: italic;
+}
+.keeplogin input#loginkeeping{
+	margin-right: 5px;
+}
+.keeplogin label{
+	width: 80%;
+}
+
+.cl-form{background-color:transparent; border-bottom:dashed 1px #818181;border-top:none;border-left:none;border-right:none;color: #fff;font-family:'Segoe UI';}
+/*styling the links to change from one form to another */
+
+
+p.change_link{
+	position: absolute;
+	color: rgb(127, 124, 124);
+	left: 0px;
+	height: 20px;
+	width: 440px;
+	padding: 17px 30px 20px 30px;
+	font-size: 16px	;
+	text-align: right;
+	border-top: 1px solid rgb(219, 229, 232);
+	-webkit-border-radius: 0 0  5px 5px;
+	   -moz-border-radius: 0 0  5px 5px;
+	        border-radius: 0 0  5px 5px;
+	background: rgb(225, 234, 235);
+	background: -moz-repeating-linear-gradient(-45deg, 
+	rgb(247, 247, 247) , 
+	rgb(247, 247, 247) 15px, 
+	rgb(225, 234, 235) 15px, 
+	rgb(225, 234, 235) 30px, 
+	rgb(247, 247, 247) 30px
+	);
+	background: -webkit-repeating-linear-gradient(-45deg, 
+	rgb(247, 247, 247) , 
+	rgb(247, 247, 247) 15px, 
+	rgb(225, 234, 235) 15px, 
+	rgb(225, 234, 235) 30px, 
+	rgb(247, 247, 247) 30px
+	);
+	background: -o-repeating-linear-gradient(-45deg, 
+	rgb(247, 247, 247) , 
+	rgb(247, 247, 247) 15px, 
+	rgb(225, 234, 235) 15px, 
+	rgb(225, 234, 235) 30px, 
+	rgb(247, 247, 247) 30px
+	);
+	background: repeating-linear-gradient(-45deg, 
+	rgb(247, 247, 247) , 
+	rgb(247, 247, 247) 15px, 
+	rgb(225, 234, 235) 15px, 
+	rgb(225, 234, 235) 30px, 
+	rgb(247, 247, 247) 30px
+	);
+}
+#wrapper p.change_link a {
+	display: inline-block;
+	font-weight: bold;
+	background: rgb(247, 248, 241);
+	padding: 2px 6px;
+	color: rgb(29, 162, 193);
+	margin-left: 10px;
+	text-decoration: none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid rgb(203, 213, 214);
+	-webkit-transition: all 0.4s linear;
+	-moz-transition: all 0.4s  linear;
+	-o-transition: all 0.4s linear;
+	-ms-transition: all 0.4s  linear;
+	transition: all 0.4s  linear;
+}
+#wrapper p.change_link a:hover {
+	color: rgb(57, 191, 215);
+	background: rgb(247, 247, 247);
+	border: 1px solid rgb(74, 179, 198);
+}
+#wrapper p.change_link a:active{
+	position: relative;
+	top: 1px;
+}
+/** Styling both forms **/
+#register, 
+#login{
+	position: absolute;
+	top: 0px;
+	width: 88%;	
+	padding: 30% 6% 30% 6%;
+	margin: 10%  10% 10% 6%!important;
+	border: 1px solid rgba(147, 184, 189,0.8);
+	-webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) ;
+	   -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) ;
+	        box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) ;
+	-webkit-box-shadow: 5px;
+	-moz-border-radius: 5px;
+		 border-radius: 5px;
+ background-image:url(../images/bg-main.jpg);	z-index: 21; background-size:cover;
+}/*opacity: 0;*/
+   
+
+#toregister:target ~ #wrapper #register,
+#tologin:target ~ #wrapper #login{
+	z-index: 22;
+	-webkit-animation-name: fadeInLeft;
+	-moz-animation-name: fadeInLeft;
+	-ms-animation-name: fadeInLeft;
+	-o-animation-name: fadeInLeft;
+	animation-name: fadeInLeft;
+	-webkit-animation-delay: .1s;
+	-moz-animation-delay: .1s;
+	-o-animation-delay: .1s;
+	-ms-animation-delay: .1s;
+	animation-delay: .1s;
+}
+#toregister:target ~ #wrapper #login,
+#tologin:target ~ #wrapper #register{
+	-webkit-animation-name: fadeOutLeft;
+	-moz-animation-name: fadeOutLeft;
+	-ms-animation-name: fadeOutLeft;
+	-o-animation-name: fadeOutLeft;
+	animation-name: fadeOutLeft;
+}
+
+/** the actual animation, credit where due : http://daneden.me/animate/ ***/
+.animate{
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-timing-function: ease;
+	-webkit-animation-fill-mode: both;
+	
+	-moz-animation-duration: 0.5s;
+	-moz-animation-timing-function: ease;
+	-moz-animation-fill-mode: both;
+	
+	-o-animation-duration: 0.5s;
+	-o-animation-timing-function: ease;
+	-o-animation-fill-mode: both;
+	
+	-ms-animation-duration: 0.5s;
+	-ms-animation-timing-function: ease;
+	-ms-animation-fill-mode: both;
+	
+	animation-duration: 0.5s;
+	animation-timing-function: ease;
+	animation-fill-mode: both;
+}
+
+/** yerk some ugly IE fixes 'cause I know someone will ask "why does it look ugly in IE?", no matter how many warnings I will put in the article */
+
+.lt8 #wrapper h1{
+	color: #066A75;
+}
+.lt8 #register{	
+	display: none;
+}
+.lt8 p.change_link,
+.ie9 p.change_link{
+	position: absolute;
+	height: 90px;
+	background: transparent;
+}
+
+.checkerbox ul{
+  list-style: none;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+.checkerbox ul li{
+  color: #fff;
+  display: block;
+  position: relative;
+  float: left;
+
+ 
+    }
+.cgt{color:#fff!important;}
+.checkerbox ul li input[type=radio]{
+  position: absolute;
+  visibility: hidden;
+}
+
+.checkerbox ul li label{
+  display: block;
+  position: relative;
+  font-weight: 300;
+  font-size: 14px;
+  padding: 5px 5px 5px 38px;
+  margin: 10px auto;
+  height: 13px;
+  z-index: 9;
+  cursor: pointer;
+  -webkit-transition: all 0.25s linear;
+}
+
+.checkerbox ul li:hover label{
+	color: #FFFFFF!important;
+}
+
+.checkerbox ul li .check{
+  display: block;
+  position: absolute;
+  border: 2px solid #AAAAAA;
+  border-radius: 100%;
+  height: 14px;
+  width: 14px;
+  top: 17px;
+  left: 20px;
+	z-index: 5;
+	transition: border .25s linear;
+	-webkit-transition: border .25s linear;
+}
+
+.checkerbox ul li:hover .check {
+  border: 2px solid #FFFFFF;
+}
+
+.checkerbox ul li .check::before {
+  display: block;
+  position: absolute;
+	content: '';
+  border-radius: 100%;
+  height: 8px;
+  width: 8px;
+  top: 1px;
+	left: 1px;
+  margin: auto;
+	transition: background 0.25s linear;
+	-webkit-transition: background 0.25s linear;
+}
+
+.checkerbox input[type=radio]:checked ~ .check {
+  border: 2px solid #fff;
+}
+
+.checkerbox input[type=radio]:checked ~ .check::before{
+  background: #e2b60a;
+}
+
+.checkerbox input[type=radio]:checked ~ label{
+  color: #FFF!important;
+}
+.nopadding{ padding:0px!important;}
+
+
+
+/*dropdown  gender*/
+
+
+.wrapper-dropdown-3 {
+    /* Size and position */
+    position: relative;
+    width: 99%;
+    margin-top: 4px;
+    padding: 9px 5px 8px 8px;
+    font-family:'Segoe UI';
+    /* Styles */
+    background: ;
+    border-radius: 7px;
+border-bottom: 1px dashed #818181;
+ 
+    color: #fff;
+    
+    cursor: pointer;
+    outline: none;
+
+    /* Font settings */
+    
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.wrapper-dropdown-3:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -3px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: #fff transparent;
+}
+.wrapper-dropdown-3 .dropdown a{ text-decoration:none!important;}
+.wrapper-dropdown-3 .dropdown {
+  /* Size & position */
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0; padding:0;
+
+    /* Styles */
+    background: #eeb30e;
+    border-radius: inherit;
+    border: 1px solid rgba(0,0,0,0.17);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    font-weight: normal;
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+    list-style: none;
+
+    /* Hiding */
+    opacity: 0;
+    pointer-events: none;
+    z-index:100000;
+}
+
+.wrapper-dropdown-3 .dropdown:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 15px;
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: #eeb30e transparent;    
+}
+
+.wrapper-dropdown-3 .dropdown:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 13px;
+    border-width: 0 8px 8px 8px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.1) transparent;    
+}
+
+.wrapper-dropdown-3 .dropdown li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color:#fff!important;
+    border-bottom: 1px solid #bd9619;
+    /*box-shadow: inset 0 1px 0 rgba(255,255,255,1)*/;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+
+.wrapper-dropdown-3  i{
+     color: #FFBA00!important;
+}
+.wrapper-dropdown-3 .dropdown li i {
+    float: right;
+   
+}
+
+.wrapper-dropdown-3 .dropdown li:first-of-type a {
+    border-radius: 7px 7px 0 0;
+}
+
+.wrapper-dropdown-3 .dropdown li:last-of-type a {
+    border: none;
+    border-radius: 0 0 7px 7px;
+}
+
+/* Hover state */
+
+.wrapper-dropdown-3 .dropdown li:hover a {
+    background: #b58e06; color:#fff!important;
+
+}
+
+/* Active state */
+
+.wrapper-dropdown-3.active .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* No CSS3 support */
+
+.no-opacity       .wrapper-dropdown-3 .dropdown,
+.no-pointerevents .wrapper-dropdown-3 .dropdown {
+    display: none;
+    opacity: 1; /* If opacity support but no pointer-events support */
+    pointer-events: auto; /* If pointer-events support but no pointer-events support */
+}
+
+.no-opacity       .wrapper-dropdown-3.active .dropdown,
+.no-pointerevents .wrapper-dropdown-3.active .dropdown {
+    display: block;
+}
+
+.wrapper-dropdown-3:focus{
+	border: 1px solid rgba(225, 225, 225, 0.7);
+	background: rgba(238, 236, 240, 0.1);	
+	-webkit-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
+	   -moz-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
+	        box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
+} 
+
+
+
+
+.submitclass:hover i{
+   transition:all 0.7s ease-out;
+   -moz-transition: 0.7s ease-out;
+    -webkit-transition: 0.7s ease-out;
+    -webkit-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+}
+
+
+
+.modal-title{
+    font-family:'Segoe Print';
+    color:#eb1c07;
+}
+
+
+.modal-body p {
+    font-family:'Segoe UI';
+    font-size:14px;
+  
+}
+
+
+.modal-body p i{
+    font-size:30px!important;
+    color:#eb1c07;
+    display:inline-block;
+    float:left;
+    padding-right:5px;
+ 
+}
+
+.btnclose{
+   background:#999;
+    color:#fff;
+    font-family:'Segoe UI';
+}
+
+.btnclose:hover{
+      background:#f7b70a;   
+        color:#fff;
+}
+
+
+.loaddiv2{
+        margin: auto auto auto auto;
+    position:absolute;    
+    z-index:9999;
+        top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display:inline-block;
+    width:230px;
+    height:80px;
+   background-color:#393939;
+    padding:10px 10px 10px 10px;
+    border-radius:5px;
+     box-shadow:  2px 5px 5px #000;
+
+}
+
+.loadgif {
+    display: block;
+    width: 50px!important;
+    height: 50px!important;
+    margin-right:5px;
+    margin-top:5px;
+    float: left;
+    background-color: transparent;
+
+}
+.loadgif i{
+    font-size:48px;
+    color:#fa9212;
+}
+.loadtxt {
+     display: block;
+          float: left;
+          font-size:20px;
+          font-weight:normal;
+       padding-top:10px;
+       padding-left:10px;
+          font-family:'Segoe Script';
+      
+          color:#fa9212;
+          vertical-align:middle;
+}
